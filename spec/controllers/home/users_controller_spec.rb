@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'support/helpers/login_helper.rb'
-include LoginHelper
 
 describe Home::UsersController do
   describe 'GET #new' do
@@ -10,7 +8,8 @@ describe Home::UsersController do
     end
 
     it 'redirects to root_path if user created' do
-      sign_in(:user)
+      current_user = create(:user)
+      sign_in(current_user)
       get :new
       expect(response).to redirect_to root_path
     end
