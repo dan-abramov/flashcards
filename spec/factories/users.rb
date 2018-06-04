@@ -52,6 +52,13 @@ FactoryGirl.define do
       end
     end
 
+    factory :user_with_current_block_and_two_cards do
+      after(:create) do |user|
+        create(:block_with_two_cards, user: user)
+      end
+      current_block_id '1'
+    end
+
     factory :invalid_user do
       email 'почта@test.com'
       password '1'
