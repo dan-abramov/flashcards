@@ -47,21 +47,21 @@ describe Dashboard::CardsController do
     end
   end
 
-  # describe 'PATCH #update' do
-  #   context 'if card updated' do
-  #     before do
-  #       @user = create(:user)
-  #       sign_in(@user)
-  #       @card = create(:card, user: @user)
-  #     end
-  #
-  #     it 'modifies info' do
-  #       patch :update, { id: @card, card: { original_text: 'домище', translated_text: 'a big house' } }
-  #       expect(@card.original_text).to eq 'домище'
-  #     end
-  #   end
-  #
-  # end
+  describe 'PATCH #update' do
+    context 'if card updated' do
+      before do
+        @user = create(:user)
+        sign_in(@user)
+        @card = create(:card, user: @user)
+      end
+
+      it 'modifies info' do
+        patch :update, { id: @card, card: { original_text: 'домище', translated_text: 'a big house' } }
+        expect(@card.original_text).to eq 'домище'
+      end
+    end
+
+  end
 
 
   describe 'DELETE #destroy' do
