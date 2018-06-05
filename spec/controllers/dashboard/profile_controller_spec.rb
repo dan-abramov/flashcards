@@ -8,16 +8,17 @@ describe Dashboard::ProfileController do #red specs!
         sign_in(@user)
       end
 
-      it 'updates user' do
-        patch :update, { id: @user, email: 'new@email.com', password: @user.password,
-                         password_confirmation: @user.password_confirmation, local: 'en' }
-        expect(user.email).to eq 'new@email.com'
-        expect(user.local).to eq 'en'
+      it 'modifies object' do  #did not change e-mail and locale
+        patch :update, { id: @user, user: { email: 'new@email.com', password: @user.password,
+                         password_confirmation: @user.password_confirmation, local: 'en' } }
+        @user.reload
+        expect(@user.email).to eq 'new@email.com'
+        expect(@user.local).to eq 'en'
       end
 
-      it 'redirects to root_path' do
-        patch :update, { id: @user, email: 'new@email.com', password: @user.password,
-                         password_confirmation: @user.password_confirmation, local: 'en' }
+      it 'redirects to edit_profile_path' do #Expected response to be a <redirect>, but was <200>
+        patch :update, { id: @user, user: { email: 'new@email.com', password: @user.password,
+                         password_confirmation: @user.password_confirmation, local: 'en' } }
         expect(response).to redirect_to edit_profile_path
       end
     end
@@ -26,9 +27,9 @@ describe Dashboard::ProfileController do #red specs!
       it 'render user template' do
         user = create(:user)
         sign_in(user)
-        patch :update, { id: user, email: 'new@email.com', password: '12345',
-                         password_confirmation: '12345', local: 'en' } }
-        expect(response).to render_template ('...')
+        patch :update, { id: user, user: { email: 'new@email.com', password: user.password,
+                         password_confirmation: user.password_confirmation, local: 'en' } }
+        expect(response).to render_template ('edit')
       end
     end
   end
