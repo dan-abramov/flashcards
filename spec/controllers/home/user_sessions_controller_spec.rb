@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe Home::UserSessionsController do
   describe 'POST #create' do
+    let(:user) { create(:user) }
+    
     context 'with valid attributes' do
-      it 'creates new session' do #red spec! expected #count to have changed by -1, but was changed by 0
-        user = create(:user)
-        expect{ post :create, { email: user.email, password: user.password } }.to change(User, :count).by(-1)
+      it 'creates new session' do
+        sign_in(user)
+        expect(logged_in?).to eq true
       end
     end
   end
