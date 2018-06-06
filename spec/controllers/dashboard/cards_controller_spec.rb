@@ -24,25 +24,15 @@ describe Dashboard::CardsController do
   end
 
   describe 'POST #create' do
-    let(:block) { create(:block, user: user) }
-
     context 'with valid attributes' do
       before { sign_in(user) }
 
-      it 'creates new card' do #red spec! expected #count to have changed by 1, but was changed by 0
-        expect { post :create, card: { original_text: 'дом',
-                                       translated_text: 'house',
-                                       image: 'string', interval: 1,
-                                       repeat: 1, efactor: 2.5, quality: 5,
-                                       attempt: 1, user: user, block: block } }.to change(user.cards, :count).by(1)
+      it 'creates new card' do
+        expect { post :create, card: { original_text: 'дом', translated_text: 'house', block_id: block } }.to change(Card, :count).by(1)
       end
 
       it 'redirects to cards path' do
-        post :create, card: { original_text: 'дом',
-                              translated_text: 'house',
-                              image: 'string', interval: 1,
-                              repeat: 1, efactor: 2.5, quality: 5,
-                              attempt: 1, user: user, block: block }
+        post :create, card: { original_text: 'дом', translated_text: 'house', block_id: block }
         expect(response).to redirect_to cards_path
       end
     end
@@ -57,10 +47,9 @@ describe Dashboard::CardsController do
   end
 
   describe 'PATCH #update' do
-    context 'if card updated' do
-      before { sign_in(user) }
-
+    context 'if card updated' do 
       it 'modifies info' do
+        sign_in(user)
         patch :update, { id: card, card: { original_text: 'домище', translated_text: 'a big house' } }
         card.reload
         expect(card.original_text).to eq 'домище'
