@@ -39,4 +39,5 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'jazz_fingers'
 end
