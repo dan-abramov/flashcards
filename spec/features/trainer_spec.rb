@@ -19,7 +19,7 @@ end
 describe 'review cards with one block' do
   describe 'training without cards' do
     before do
-      create(:user_with_one_block_without_cards)
+      create(:user, :with_block)
       visit trainer_path
       login('test@test.com', '12345', 'Войти')
     end
@@ -31,7 +31,7 @@ describe 'review cards with one block' do
 
   describe 'training with two cards' do
     before do
-      user = create(:user_with_one_block_and_two_cards)
+      user = create(:user, :with_block_with_2_cards)
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
@@ -71,7 +71,7 @@ describe 'review cards with one block' do
 
   describe 'training with one card' do
     before do
-      user = create(:user_with_one_block_and_one_card)
+      user = create(:user, :with_block_with_card)
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
@@ -131,7 +131,7 @@ end
 describe 'review cards with two blocks' do
   describe 'training without cards' do
     before do
-      create(:user_with_two_blocks_without_cards)
+      create(:user, :with_2_blocks)
       visit trainer_path
       login('test@test.com', '12345', 'Войти')
     end
@@ -143,7 +143,7 @@ describe 'review cards with two blocks' do
 
   describe 'training with two cards' do
     before do
-      user = create(:user_with_two_blocks_and_one_card_in_each)
+      user = create(:user, :with_block_with_card, :with_block_with_card)
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
@@ -183,7 +183,7 @@ describe 'review cards with two blocks' do
 
   describe 'training with one card' do
     before do
-      user = create(:user_with_two_blocks_and_only_one_card)
+      user = create(:user, :with_block, :with_block_with_card)
       user.cards.each { |card| card.update_attribute(:review_date,
                                                      Time.now - 3.days) }
       visit trainer_path
@@ -221,7 +221,7 @@ end
 describe 'review cards with current_block' do
   describe 'training without cards' do
     before do
-      create(:user_with_two_blocks_without_cards, current_block_id: 1)
+      create(:user, :with_2_blocks, current_block_id: 1)
       visit trainer_path
       login('test@test.com', '12345', 'Войти')
     end
@@ -233,7 +233,7 @@ describe 'review cards with current_block' do
 
   describe 'training with two cards' do
     before do
-      user = create(:user_with_two_blocks_and_two_cards_in_each)
+      user = create(:user, :with_block_with_2_cards, :with_block_with_2_cards)
       block = user.blocks.first
       user.set_current_block(block)
       card = user.cards.find_by(block_id: block.id)
@@ -275,7 +275,7 @@ describe 'review cards with current_block' do
 
   describe 'training with one card' do
     before do
-      user = create(:user_with_two_blocks_and_one_card_in_each)
+      user = create(:user, :with_block_with_card, :with_block_with_card)
       block = user.blocks.first
       user.set_current_block(block)
       card = user.cards.find_by(block_id: block.id)

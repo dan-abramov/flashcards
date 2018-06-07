@@ -6,7 +6,7 @@ describe Dashboard::CardsController do
   let(:card)  { create(:card, block: block, user: user) }
 
   describe 'GET #index' do
-    let(:user)  { create(:user_with_two_blocks_and_two_cards_in_each) }
+    let(:user)  { create(:user, :with_block_with_2_cards, :with_block_with_2_cards) }
 
     it 'make array of all cards' do
       sign_in(user)
