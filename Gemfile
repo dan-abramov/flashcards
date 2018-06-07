@@ -37,7 +37,7 @@ gem 'responders'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'jazz_fingers'
   gem 'rails-controller-testing'
