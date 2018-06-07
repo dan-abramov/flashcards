@@ -18,22 +18,22 @@ describe Home::UsersController do
   describe 'POST #create' do
     context 'with valid attributes' do
       it 'creates new user' do
-        expect { post :create, user: attributes_for(:user) }.to change(User, :count).by(1)
+        expect { post :create, params: { user: attributes_for(:user) } }.to change(User, :count).by(1)
       end
 
       it 'redirects to root_path' do
-        post :create, user: attributes_for(:user)
+        post :create, params: { user: attributes_for(:user) }
         expect(response).to redirect_to root_path
       end
     end
 
     context 'with invalid attributes' do
       it 'creates new user' do
-        expect { post :create, user: attributes_for(:invalid_user) }.to change(User, :count).by(0)
+        expect { post :create, params: { user: attributes_for(:invalid_user) } }.to change(User, :count).by(0)
       end
 
       it 'redirects to user' do
-        post :create, user: attributes_for(:invalid_user)
+        post :create, params: { user: attributes_for(:invalid_user) }
         expect(response).to render_template('new')
       end
     end

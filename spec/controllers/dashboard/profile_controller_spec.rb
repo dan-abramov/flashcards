@@ -8,7 +8,7 @@ describe Dashboard::ProfileController do
       before { sign_in(user) }
 
       it 'modifies object' do
-        patch :update, { id: user, user: { email: 'new@email.com', password: '123456',
+        patch :update, params: { id: user, user: { email: 'new@email.com', password: '123456',
                          password_confirmation: '123456', locale: 'en' } }
         user.reload
         expect(user.email).to eq 'new@email.com'
@@ -16,7 +16,7 @@ describe Dashboard::ProfileController do
       end
 
       it 'redirects to edit_profile_path' do
-        patch :update, { id: user, user: { email: 'new@email.com', password: '123456',
+        patch :update, params: { id: user, user: { email: 'new@email.com', password: '123456',
                          password_confirmation: '123456', locale: 'en' } }
         expect(response).to redirect_to edit_profile_path
       end
@@ -25,7 +25,7 @@ describe Dashboard::ProfileController do
     context 'user did not update' do
       it 'render user template' do
         sign_in(user)
-        patch :update, { id: user, user: { email: 'new@email.com', password: user.password,
+        patch :update, params: { id: user, user: { email: 'new@email.com', password: user.password,
                          password_confirmation: user.password_confirmation, locale: 'en' } }
         expect(response).to render_template ('edit')
       end

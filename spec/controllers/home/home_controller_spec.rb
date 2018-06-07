@@ -6,7 +6,7 @@ describe Home::HomeController do
 
     before { sign_in(user) }
     it 'shows card without current_block' do
-      get :index, id: user.cards[0]
+      get :index, params: { id: user.cards[0] }
       expect(assigns(:card)).to eq user.cards[0]
     end
 

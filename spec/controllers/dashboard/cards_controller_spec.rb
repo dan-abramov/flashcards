@@ -28,11 +28,11 @@ describe Dashboard::CardsController do
       before { sign_in(user) }
 
       it 'creates new card' do
-        expect { post :create, card: { original_text: 'дом', translated_text: 'house', block_id: block } }.to change(Card, :count).by(1)
+        expect { post :create, params: { card: { original_text: 'дом', translated_text: 'house', block_id: block } } }.to change(Card, :count).by(1)
       end
 
       it 'redirects to cards path' do
-        post :create, card: { original_text: 'дом', translated_text: 'house', block_id: block }
+        post :create, params: { card: { original_text: 'дом', translated_text: 'house', block_id: block } }
         expect(response).to redirect_to cards_path
       end
     end
@@ -40,17 +40,17 @@ describe Dashboard::CardsController do
     context 'with invalid attributes' do
       it 'render template create' do
         sign_in(user)
-        post :create, card: attributes_for(:invalid_card)
+        post :create, params: { card: attributes_for(:invalid_card) }
         expect(response).to render_template('new')
       end
     end
   end
 
   describe 'PATCH #update' do
-    context 'if card updated' do 
+    context 'if card updated' do
       it 'modifies info' do
         sign_in(user)
-        patch :update, { id: card, card: { original_text: 'домище', translated_text: 'a big house' } }
+        patch :update, params: { id: card, card: { original_text: 'домище', translated_text: 'a big house' } }
         card.reload
         expect(card.original_text).to eq 'домище'
       end
@@ -59,11 +59,11 @@ describe Dashboard::CardsController do
 
   describe 'DELETE #destroy' do
     it 'destroys card' do
-      expect { delete :destroy, { id: card.id } }.to change(Card, :count).by(1)
+      expect { delete :destroy, params: { id: card.id } }.to change(Card, :count).by(1)
     end
 
     it 'redirects to root_path' do
-      delete :destroy, { id: card.id }
+      delete :destroy, params: { id: card.id }
       expect(response).to redirect_to login_path
     end
   end
