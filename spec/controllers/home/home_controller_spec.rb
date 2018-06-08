@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Home::HomeController do
   describe 'GET #index' do
-    let(:user) { create(:user, :with_block_with_2_cards) }
+    let(:user) { create(:user, :with_block_with_card) }
 
     before { sign_in(user) }
     it 'shows card without current_block' do
