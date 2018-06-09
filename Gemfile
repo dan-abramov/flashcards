@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.1.4'
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '5.1.1'
 # Use postgresql as the database for Active Record
-gem 'pg'
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'pg', '~> 0.18'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
@@ -18,7 +18,7 @@ gem 'rake'
 gem 'simple_form'
 gem 'nokogiri'
 gem 'seedbank'
-gem 'sorcery'
+gem 'sorcery', '~> 0.12.0'
 gem 'faraday'
 gem 'figaro'
 gem 'carrierwave'
@@ -31,9 +31,14 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
+gem 'responders'
+
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
+  gem 'pry-rails'
+  gem 'jazz_fingers'
+  gem 'rails-controller-testing'
 end

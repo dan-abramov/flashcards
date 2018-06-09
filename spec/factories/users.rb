@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     email 'test@test.com'
     password '12345'
@@ -6,50 +6,35 @@ FactoryGirl.define do
     locale 'ru'
     current_block_id ''
 
-    factory :user_with_one_block_without_cards do
+    trait :with_block do
       after(:create) do |user|
         create(:block, user: user)
       end
     end
 
-    factory :user_with_two_blocks_without_cards do
+    trait :with_2_blocks do
       after(:create) do |user|
         create(:block, user: user)
         create(:block, user: user)
       end
     end
 
-    factory :user_with_one_block_and_one_card do
+    trait :with_block_with_card do
       after(:create) do |user|
-        create(:block_with_one_card, user: user)
+        create(:block, :with_card, user: user)
       end
     end
 
-    factory :user_with_one_block_and_two_cards do
+    trait :with_block_with_2_cards do
       after(:create) do |user|
-        create(:block_with_two_cards, user: user)
+        create(:block, :with_2_cards, user: user)
       end
     end
 
-    factory :user_with_two_blocks_and_one_card_in_each do
-      after(:create) do |user|
-        create(:block_with_one_card, user: user)
-        create(:block_with_one_card, user: user)
-      end
-    end
-
-    factory :user_with_two_blocks_and_only_one_card do
-      after(:create) do |user|
-        create(:block, user: user)
-        create(:block_with_one_card, user: user)
-      end
-    end
-
-    factory :user_with_two_blocks_and_two_cards_in_each do
-      after(:create) do |user|
-        create(:block_with_two_cards, user: user)
-        create(:block_with_two_cards, user: user)
-      end
+    factory :invalid_user do
+      email 'почта@test.com'
+      password '1'
+      password_confirmation '1'
     end
   end
 end

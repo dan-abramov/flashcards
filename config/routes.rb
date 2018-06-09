@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   scope module: 'home' do
     resources :user_sessions, only: [:new, :create]
     resources :users, only: [:new, :create]
+    resources :home, only: [:index]
     get 'login' => 'user_sessions#new', :as => :login
 
     post 'oauth/callback' => 'oauths#callback'
