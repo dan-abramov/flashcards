@@ -32,6 +32,7 @@ gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'responders'
+gem 'activeadmin'
 
 
 group :development, :test do
