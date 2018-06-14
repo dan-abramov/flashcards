@@ -33,6 +33,7 @@ gem 'rollbar'
 gem 'newrelic_rpm'
 gem 'responders'
 gem 'activeadmin'
+gem 'rolify'
 
 
 group :development, :test do
