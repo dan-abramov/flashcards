@@ -199,6 +199,8 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -338,6 +340,7 @@ DEPENDENCIES
   nokogiri
   pg (~> 0.18)
   pry-rails
+  pundit
   rails (= 5.1.1)
   rails-controller-testing
   rails_12factor

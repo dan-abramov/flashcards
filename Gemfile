@@ -34,6 +34,7 @@ gem 'newrelic_rpm'
 gem 'responders'
 gem 'activeadmin'
 gem 'rolify'
+gem 'pundit'
 
 
 group :development, :test do
