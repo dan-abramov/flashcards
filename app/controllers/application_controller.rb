@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  protect_from_forgery
+  rescue_from Pundit::NotAuthorizedError, with: :access_denied
 
   protect_from_forgery with: :exception
   before_action :set_locale
@@ -29,13 +29,14 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
+
+  def access_denied
+    flash[:alert] = t(:access_denied)
+    redirect_to root_path
+  end
   
   # For ActiveAdmin
 
-  # def access_denied
-  #   flash[:notice] = 'Для начала авторизуйтесь. Спасибо.'
-  #   redirect_to new_user_session_path
-  # end
   #
   # def current_admin_user
   #   current_user
