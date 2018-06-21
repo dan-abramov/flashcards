@@ -5,7 +5,12 @@ ActiveAdmin.register_page "Dashboard" do
     private
 
     def check_authorization
-      authorize :admin, :index?
+
+      if current_user
+        authorize :admin, :has_rights?
+      else
+        raise Pundit::NotAuthorizedError
+      end
     end
   end
 

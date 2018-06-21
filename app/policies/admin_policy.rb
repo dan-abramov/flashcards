@@ -1,9 +1,5 @@
 class AdminPolicy < ApplicationPolicy
-  def index?
-    if @user
-      @user.has_role? :admin
-    else
-      false
-    end
+  def has_rights?
+    return true if @user.has_role? :admin
   end
 end
