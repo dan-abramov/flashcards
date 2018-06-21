@@ -40,6 +40,7 @@ gem 'pundit'
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy'
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'jazz_fingers'

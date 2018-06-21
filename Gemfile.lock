@@ -157,6 +157,8 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     levenshtein (0.2.2)
     loofah (2.2.2)
       crass (~> 1.0.2)
@@ -334,6 +336,7 @@ DEPENDENCIES
   jazz_fingers
   jbuilder (~> 2.0)
   jquery-rails
+  launchy
   levenshtein
   mini_magick
   newrelic_rpm
