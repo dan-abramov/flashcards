@@ -38,10 +38,10 @@ FactoryBot.define do
     end
 
     factory :admin do
-      email 'admin@mail.com'
+      email 'admin@fortest.com'
       password '12345678'
       password_confirmation '12345678'
-      after(:create) {|user| user.add_role(:admin)}
+      after(:create) { |user| user.add_role :admin }
     end
   end
 end
