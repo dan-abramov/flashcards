@@ -36,5 +36,12 @@ FactoryBot.define do
       password '1'
       password_confirmation '1'
     end
+
+    factory :admin do
+      email 'admin@fortest.com'
+      password '12345678'
+      password_confirmation '12345678'
+      after(:create) { |user| user.add_role :admin }
+    end
   end
 end

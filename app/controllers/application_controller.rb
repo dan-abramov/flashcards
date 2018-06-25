@@ -1,8 +1,19 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+  rescue_from Pundit::NotAuthorizedError, with: :access_denied
+
   protect_from_forgery with: :exception
   before_action :set_locale
 
   private
+
+  def check_authorization
+    if current_user
+      authorize :admin, :has_rights?
+    else
+      raise Pundit::NotAuthorizedError
+    end
+  end
 
   def set_locale
     locale = if current_user
@@ -20,9 +31,27 @@ class ApplicationController < ActionController::Base
     else
       session[:locale] = I18n.locale = I18n.default_locale
     end
+
   end
 
   def default_url_options(options = {})
     { locale: I18n.locale }.merge options
   end
+
+  def access_denied
+    flash[:alert] = t(:access_denied)
+    redirect_to root_path
+  end
+
+  # For ActiveAdmin
+
+  #
+  # def current_admin_user
+  #   current_user
+  # end
+  #
+  # def destroy_admin_user_session_path
+  #   logout
+  #   redirect_to login_path, notice: t(:log_out_is_successful_notice)
+  # end
 end
