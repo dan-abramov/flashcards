@@ -35,6 +35,7 @@ gem 'responders'
 gem 'activeadmin'
 gem 'rolify'
 gem 'pundit'
+gem 'flickr_fu'
 
 
 group :development, :test do
