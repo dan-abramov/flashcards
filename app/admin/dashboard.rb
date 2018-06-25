@@ -1,17 +1,6 @@
 ActiveAdmin.register_page "Dashboard" do
   controller do
     before_action :check_authorization
-
-    private
-
-    def check_authorization
-
-      if current_user
-        authorize :admin, :has_rights?
-      else
-        raise Pundit::NotAuthorizedError
-      end
-    end
   end
 
   menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }

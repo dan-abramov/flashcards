@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def check_authorization
+    if current_user
+      authorize :admin, :has_rights?
+    else
+      raise Pundit::NotAuthorizedError
+    end
+  end
+
   def set_locale
     locale = if current_user
                current_user.locale
@@ -34,7 +42,7 @@ class ApplicationController < ActionController::Base
     flash[:alert] = t(:access_denied)
     redirect_to root_path
   end
-  
+
   # For ActiveAdmin
 
   #

@@ -19,5 +19,5 @@
 #   Card.create(original_text: original, translated_text: translated, user_id: 17)
 # end
 
-@user = User.create(email:'admin@mail.com', password:'12345678', password_confirmation:'12345678')
-@user.add_role :admin
+user = User.create(email:'admin@mail.com', password:'12345678', password_confirmation:'12345678')
+user.add_role :admin
