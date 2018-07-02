@@ -36,3 +36,21 @@
 .block_user_current_block_id {
   margin-left: 20px;
 }
+
+.flickr_photo
+{
+  width: auto;
+  height: 150px;
+  padding: 10px;
+  margin: 0;
+}
+
+.flickr_photo:hover
+{
+  background-color: #99e6ff;
+}
+
+.flickr_photo:active
+{
+  background-color: #00ace6;
+}
