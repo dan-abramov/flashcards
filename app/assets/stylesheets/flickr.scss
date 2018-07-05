@@ -1,3 +1,77 @@
 // Place all the styles related to the Flickr controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.flickr-search-results{
+  margin-top: 30px;
+}
+
+.flickr-header {
+  background: #000;
+  position:relative;
+  height: 50px;
+  width: auto;
+  margin-bottom: 15px;
+  background-image: url("https://static.tumblr.com/9faf3a59641044c85a09cdfde912709f/xk1usot/H4mmooc0s/tumblr_static_flickr-logo.png");
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: 50% 50%;
+}
+
+.flickr-footer {
+  position: fixed;
+  background: #000;
+  bottom: 0;
+  height: 50px;
+  width: auto;
+}
+
+.flickr_photo {
+  width: auto;
+  height: 150px;
+  padding: 10px;
+  margin: 0;
+}
+
+.flickr_photo:hover{
+  background-color: #99e6ff;
+}
+
+.btn.flickr-search-btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+}
+
+.flickr-search-btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.flickr-search-input {
+  position: relative;
+  display: block;
+  width: 250px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
