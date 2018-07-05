@@ -1,4 +1,4 @@
-<div class = 'search-results'>
+<div class = 'flickr-search-results'>
   <% if @photos %>
     <% @photos.each do |p| %>
       <%= image_tag(p.url(:square), class: 'flickr_photo') %>

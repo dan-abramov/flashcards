@@ -13,7 +13,8 @@
   <div class="form-group">
     <%= f.input :image, as: :file, label: 'Изображение' %>
     <%= f.input :image_cache, as: :hidden %>
-    <%= f.button :submit, 'Загрузить с Flickr' %>
+    <%= link_to 'Загрузить с Flickr', flickr_search_path, class: 'flickr_button', data: { modal: true } %>
+    <div id='modal-holder'></div>
   </div>
 
   <div class="form-group">

@@ -1,6 +1,6 @@
-<%= simple_form_for :flickr, url: 'find', remote: true do |f| %>
+<!-- <%= simple_form_for :flickr, url: 'find', remote: true do |f| %>
   <div class="form-horizontal form-group-lg control-label">
-    <%= f.input '', as: :text  %>
+    <%= f.text_field '', as: :text  %>
   </div>
 
   <%= f.button :submit, 'Найти', class: 'btn btn-default' %>
@@ -10,4 +10,4 @@
   <% if @photos %>
     <%= render 'search_results' %>
   <% end %>
-</div>
+</div> -->
