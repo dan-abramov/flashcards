@@ -36,6 +36,8 @@ gem 'activeadmin'
 gem 'rolify'
 gem 'pundit'
 gem 'flickr_fu'
+gem 'popper_js'
+gem 'bootstrap'
 
 
 group :development, :test do
