@@ -1,6 +1,4 @@
 class FlickrController < ApplicationController
-  def search; end
-
   def find
     @flickr = Flickr.new('config/flickr.yml')
     @photos = @flickr.photos.get_recent(:tag => params[:flickr].first).take(10)
