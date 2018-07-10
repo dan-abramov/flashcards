@@ -38,6 +38,7 @@ gem 'pundit'
 gem 'flickr_fu'
 gem 'popper_js'
 gem 'bootstrap'
+gem 'bootstrap-sass'
 
 
 group :development, :test do

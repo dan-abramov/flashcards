@@ -1,0 +1,17 @@
+<div class='flickr-header'> </div>
+
+<div class='container flickr-container'>
+  <%= simple_form_for :flickr, remote: true, url: flickr_find_path, authenticity_token: true, id: 'flickr-find-form' do |f| %>
+    <div class="form-group row col-xs-8">
+      <%= f.text_field '', as: :text  %>
+    </div>
+
+    <%= f.button :submit, 'Найти', class: "flickr-search-btn", 'data-disable-with' => 'Где-то тут было...' %>
+  <% end %>
+
+  <div class="flickr">
+    <% if @photos %>
+      <%= render 'search_results' %>
+    <% end %>
+  </div>
+</div>

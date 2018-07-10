@@ -63,6 +63,9 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.2.1)
@@ -317,6 +320,9 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    turbolinks (5.1.1)
+      turbolinks-source (~> 5.1)
+    turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.11)
@@ -337,6 +343,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bootstrap
+  bootstrap-sass
   capybara
   carrierwave
   coffee-rails
@@ -372,6 +379,7 @@ DEPENDENCIES
   seedbank
   simple_form
   sorcery (~> 0.12.0)
+  turbolinks
   uglifier
   whenever
 
