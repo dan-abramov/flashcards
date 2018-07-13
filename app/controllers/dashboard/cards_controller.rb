@@ -14,7 +14,13 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def create
-    @card = current_user.cards.build(card_params)
+    if params[:image_url]
+      @card = current_user.cards.build(card_params)
+      @card.image_url = params[:image_url]
+    else
+      @card = current_user.cards.build(card_params)
+    end
+
     if @card.save
       redirect_to cards_path
     else
