@@ -14,13 +14,12 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def create
-    if params[:image_url]
-      @card = current_user.cards.build(card_params)
-      @card.image_url = params[:image_url]
+    if params[:image_flickr_url]
+      @card = current_user.cards.build(card_params.merge(image_flickr_url: params[:image_flickr_url]))
     else
       @card = current_user.cards.build(card_params)
     end
-
+    
     if @card.save
       redirect_to cards_path
     else

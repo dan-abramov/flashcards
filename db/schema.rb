@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180713130325) do
     t.float "efactor", default: 2.5, null: false
     t.integer "attempt", default: 1, null: false
     t.integer "quality", default: 5, null: false
-    t.string "image_url"
+    t.string "image_flickr_url"
   end
 
   create_table "roles", force: :cascade do |t|

@@ -12,7 +12,7 @@ $(function() {
     console.log($('.flickr-photo-checked').attr('src'));
     $('.form-group-image-picker').children('.image-picker').remove();
     $('.form-group-image-picker').append('<img class="flickr_photo" src="' + $('.flickr-photo-checked').attr('src') +'">');
-    $('.form-group-image-picker').append('<input id="token" name="image_url" type="hidden" value="' + $('.flickr-photo-checked').attr('src') +'">');
+    $('.form-group-image-picker').append('<input id="token" name="image_flickr_url" type="hidden" value="' + $('.flickr-photo-checked').attr('src') +'">');
   });
 
 });
