@@ -15,6 +15,6 @@ class CardImageUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    "#{model.id}.#{file.extension.downcase}" if original_filename
+    "#{model.review_date}.#{file.extension.downcase}" if original_filename
   end
 end
