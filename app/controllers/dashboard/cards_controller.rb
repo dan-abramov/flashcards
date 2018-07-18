@@ -14,12 +14,7 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def create
-    if params[:image_flickr_url]
-      @card = current_user.cards.build(card_params.merge(image_flickr_url: params[:image_flickr_url]))
-    else
-      @card = current_user.cards.build(card_params)
-    end
-    
+    @card = current_user.cards.build(card_params)
     if @card.save
       redirect_to cards_path
     else
@@ -28,10 +23,20 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def update
-    if @card.update(card_params)
-      redirect_to cards_path
-    else
-      respond_with @card
+    respond_to do |format|
+      format.html do
+        if @card.update(card_params)
+          redirect_to cards_path
+        else
+          respond_with @card
+        end
+      end
+      format.js do
+        @card.update(card_params)
+        @card.update(image_flickr_url:nil) unless card_params['image_flickr_url']
+        @card.remove_image! unless card_params['image_']
+        binding.pry
+      end
     end
   end
 
@@ -48,6 +53,6 @@ class Dashboard::CardsController < Dashboard::BaseController
 
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                 :image, :image_cache, :remove_image, :block_id)
+                                 :image, :image_cache, :remove_image, :block_id, :image_flickr_url)
   end
 end
