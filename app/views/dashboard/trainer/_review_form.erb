@@ -4,40 +4,24 @@
     <% if card.image_flickr_url %>
       <%= image_tag(card.image_flickr_url, size: '150') %>
     <% elsif card.image? %>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-xs-3 col-md-2 card_image">
-            <p class="thumbnail">
-              <%= image_tag card.image_url %>
-            </p>
-          </div>
-        </div>
-      </div>
+      <%= image_tag card.image_url %>
     <% end %>
-  </div>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-xs-3 col-md-2 card_image">
-        <p class="thumbnail">
-          <%= image_tag(card.image_url.to_s, size: '150') if card.image_url.present? %>
-        </p>
-      </div>
-    </div>
   </div>
 
   <div class='change-image-buttons'>
     <button type="button" class="change-image-button" data-card-id="<%= card.id %>">Изменить изображение</button>
 
-    <%= simple_form_for card, html: { class: 'edit_card inside_card'}, method: :patch, remote: true, authenticity_token: true do |f| %>
+    <%= simple_form_for card, html: { class: 'edit_card inside_card'}, method: :put, format: :js, remote: true, authenticity_token: true do |f| %>
       <%= f.input :image, as: :file, label: 'Изображение' %>
       <%= f.input :image_cache, as: :hidden %>
       <button type="button" class="download-from-flickr-button" data-toggle="modal" data-target="#modal-window">Загрузить с Flickr</button>
-      <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
+      <br>
+      <%= f.button :submit, 'Сохранить', class: 'btn btn-default save-button-edit-form' %>
+      <button type="button" class="cancel-image-edit-form">Отменить</button>
     <% end %>
   </div>
+
   <%= form_tag review_card_path(card_id: card.id), method: :put, remote: true do %>
-
-
     <div class="form-group">
       <%= label_tag '', t(:original_text_label) %>
       <%= text_area_tag '', card.original_text, class: 'form-control',
