@@ -22,8 +22,9 @@ $(function() {
   });
 
   $('body').on('click', '.flickr-confirm-button.ready', function(){
-    $('.form-group-image-picker').children('.image-picker').remove();
-    $('.form-group-image-picker').append('<img class="flickr_photo" src="' + $('.flickr-photo-checked').attr('src') +'">');
+    $('#image-of-card').empty();
+    $('#image-of-card').append('<img src="' + $('.flickr-photo-checked').attr('src') +'" width="150">');
     $('.form-group-image-picker').append('<input id="token" name="card[image_flickr_url]" type="hidden" value="' + $('.flickr-photo-checked').attr('src') +'">');
+    $('#card_image').val('');
   });
 });
