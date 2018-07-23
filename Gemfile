@@ -49,4 +49,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'jazz_fingers'
   gem 'rails-controller-testing'
+  gem 'vcr'
+  gem 'fakeweb'
+  gem 'webmock'
+  gem 'selenium-webdriver'
+  gem 'puma'
 end
