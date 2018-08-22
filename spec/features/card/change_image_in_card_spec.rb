@@ -7,7 +7,7 @@ describe 'change image to flickr image' do
 
   it 'changes image', :vcr, js: true do
     visit root_path
-    login('test@test.com', '12345', 'Log in')
+    login('test@test.com', '12345', 'Войти')
     visit trainer_path
     expect(current_path).to eq trainer_path
 
@@ -37,12 +37,11 @@ describe 'change flickr image to image' do
 
   it 'changes image', :vcr, js: true do
     visit root_path
-    login('test@test.com', '12345', 'Log in')
+    login('test@test.com', '12345', 'Войти')
     visit trainer_path
     expect(current_path).to eq trainer_path
 
     click_on('Изменить изображение')
-    save_and_open_page
     sleep 7
     page.find('#card_image').click
   end

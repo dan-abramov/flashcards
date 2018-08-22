@@ -7,7 +7,7 @@ describe 'create card' do
 
   it 'add image from flickr and create card', :vcr, js: true do
     visit root_path
-    login('test@test.com', '12345', 'Log in')
+    login('test@test.com', '12345', 'Войти')
     visit new_card_path
     expect(current_path).to eq new_card_path
 
