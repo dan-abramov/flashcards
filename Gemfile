@@ -39,7 +39,7 @@ gem 'flickr_fu'
 gem 'popper_js'
 gem 'bootstrap'
 gem 'bootstrap-sass'
-
+gem "chromedriver-helper"
 
 group :development, :test do
   gem 'rspec-rails'

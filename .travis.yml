@@ -5,7 +5,7 @@ script:
   - bundle exec rspec
 addons:
   postgresql: "9.4"
-  firefox: "61.0.2"
+  chrome: stable
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres

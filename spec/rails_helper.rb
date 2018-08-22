@@ -7,6 +7,7 @@ require 'support/helpers/controller_helper.rb'
 require 'pry'
 require 'webmock/rspec'
 require 'vcr'
+require 'selenium-webdriver'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -54,4 +55,8 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+end
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
