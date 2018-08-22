@@ -35,7 +35,6 @@ class Dashboard::CardsController < Dashboard::BaseController
         @card.update(card_params)
         @card.update(image_flickr_url:nil) unless card_params['image_flickr_url']
         @card.remove_image! unless card_params['image']
-        binding.pry
       end
     end
   end
