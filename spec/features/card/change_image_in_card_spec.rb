@@ -42,7 +42,16 @@ describe 'change flickr image to image' do
     expect(current_path).to eq trainer_path
 
     click_on('Изменить изображение')
-    sleep 7
-    page.find('#card_image').click
+    sleep 1
+
+    attach_file("card_image", Rails.root + "spec/support/files/image.png")
+    click_on 'Сохранить'
+
+    visit root_path
+    visit trainer_path
+
+    within('#image-of-card') do
+      page.find(:css,'img[src*="uploads/card/image/image_' + user.cards.first.id.to_s + '"]')
+    end
   end
 end
