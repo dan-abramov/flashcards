@@ -55,11 +55,6 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def update_params
-    unless card_params['image_flickr_url']
-      params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                   :image, :image_cache, :remove_image, :block_id, :image_flickr_url).merge(image_flickr_url: nil)
-    else
-      card_params
-    end
+    card_params['image_flickr_url'] ? card_params : card_params.merge(image_flickr_url: nil)
   end
 end
