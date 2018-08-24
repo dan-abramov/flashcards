@@ -16,13 +16,16 @@ describe 'create card' do
     click_on('Загрузить с Flickr')
     fill_in 'flickr[]', with: 'hello'
     click_on 'Найти'
-    sleep 2
     first(".flickr_photo").click
     image_source = first(".flickr_photo")[:src]
     click_on 'Выбрать'
     within('#image-of-card') do
       page.find(:css,'img[src*="' + image_source + '"]')
     end
-    #flickr working, but spec is not completed
+    select "Block 1", from: "card_block_id"
+    find("input[value='Сохранить']").click
+    visit cards_path
+    expect(page).to have_content 'hello'
+    expect(page).to have_content 'здрасть'
   end
 end

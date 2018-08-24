@@ -15,7 +15,6 @@ describe 'change image to flickr image' do
     click_on('Загрузить с Flickr')
     fill_in 'flickr[]', with: 'hello'
     click_on 'Найти'
-    sleep 5
     first(".flickr_photo").click
     image_source = first(".flickr_photo")[:src]
     click_on 'Обновить изображение'
@@ -42,7 +41,6 @@ describe 'change flickr image to image' do
     expect(current_path).to eq trainer_path
 
     click_on('Изменить изображение')
-    sleep 1
 
     attach_file("card_image", Rails.root + "spec/support/files/image.png")
     click_on 'Сохранить'
