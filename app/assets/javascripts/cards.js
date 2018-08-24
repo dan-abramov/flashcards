@@ -1,7 +1,7 @@
 $(function() {
   $('.simple_form.edit_card.inside_card').hide();
 
-  $('.cancel-image-edit-form').on('click', function(){
+  $('.cancel-image-edit-form').click(function(){
     $('#card_image').val('');
     $('input[name="card[image_flickr_url]"]').remove();
     $('input[name="id"]').remove();
