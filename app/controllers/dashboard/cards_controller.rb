@@ -32,8 +32,7 @@ class Dashboard::CardsController < Dashboard::BaseController
         end
       end
       format.js do
-        @card.update(card_params)
-        @card.update(image_flickr_url:nil) unless card_params['image_flickr_url']
+        @card.update(update_params)
         @card.remove_image! unless card_params['image']
       end
     end
@@ -53,5 +52,14 @@ class Dashboard::CardsController < Dashboard::BaseController
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date,
                                  :image, :image_cache, :remove_image, :block_id, :image_flickr_url)
+  end
+
+  def update_params
+    unless card_params['image_flickr_url']
+      params.require(:card).permit(:original_text, :translated_text, :review_date,
+                                   :image, :image_cache, :remove_image, :block_id, :image_flickr_url).merge(image_flickr_url: nil)
+    else
+      card_params
+    end
   end
 end
