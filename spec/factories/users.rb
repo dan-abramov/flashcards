@@ -31,6 +31,13 @@ FactoryBot.define do
       end
     end
 
+    trait :with_block_and_card_with_flickr_image do
+      after(:create) do |user|
+        create(:block, user: user)
+        create(:card_with_flickr_url, block: user.blocks[0], user: user )
+      end
+    end
+
     factory :invalid_user do
       email 'почта@test.com'
       password '1'

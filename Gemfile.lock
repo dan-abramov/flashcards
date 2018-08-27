@@ -54,9 +54,20 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
+    archive-zip (0.11.0)
+      io-like (~> 0.3.0)
     arel (8.0.0)
+    autoprefixer-rails (8.6.4)
+      execjs
     awesome_print (1.8.0)
     bcrypt (3.1.12)
+    bootstrap (4.1.1)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (>= 1.12.9, < 2)
+      sass (>= 3.5.2)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.2.1)
@@ -70,6 +81,11 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    childprocess (0.9.0)
+      ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.2.0)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     chronic (0.10.2)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -82,6 +98,8 @@ GEM
     concurrent-ruby (1.0.5)
     coolline (0.5.0)
       unicode_utils (~> 1.4)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.4)
     diff-lcs (1.3)
     erubi (1.7.1)
@@ -92,11 +110,15 @@ GEM
     factory_bot_rails (4.10.0)
       factory_bot (~> 4.10.0)
       railties (>= 3.0.0)
+    fakeweb (1.3.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     figaro (1.1.1)
       thor (~> 0.14)
+    flickr_fu (0.3.4)
+      mime-types
+      xml-magic
     fog-aws (3.0.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -122,6 +144,7 @@ GEM
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
+    hashdiff (0.3.7)
     http_accept_language (2.1.1)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -130,6 +153,7 @@ GEM
       has_scope (~> 0.6)
       railties (>= 4.2, <= 5.2)
       responders
+    io-like (0.3.0)
     ipaddress (0.8.3)
     jazz_fingers (5.0.0)
       awesome_print (~> 1.6)
@@ -190,6 +214,7 @@ GEM
     pg (0.21.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
+    popper_js (1.12.9)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -201,6 +226,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
+    puma (3.12.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.5)
@@ -275,6 +301,8 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    rubyzip (1.2.1)
+    safe_yaml (1.0.4)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -290,6 +318,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     seedbank (0.4.0)
+    selenium-webdriver (3.13.1)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.2)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -312,11 +343,17 @@ GEM
     uglifier (4.1.11)
       execjs (>= 0.3.0, < 3)
     unicode_utils (1.4.0)
+    vcr (4.0.0)
+    webmock (3.4.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     whenever (0.10.0)
       chronic (>= 0.6.3)
+    xml-magic (0.1.1)
     xpath (3.1.0)
       nokogiri (~> 1.8)
 
@@ -325,12 +362,17 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  bootstrap
+  bootstrap-sass
   capybara
   carrierwave
+  chromedriver-helper
   coffee-rails
   factory_bot_rails
+  fakeweb
   faraday
   figaro
+  flickr_fu
   fog-aws
   http_accept_language
   jazz_fingers
@@ -342,7 +384,9 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   pg (~> 0.18)
+  popper_js
   pry-rails
+  puma
   pundit
   rails (= 5.1.1)
   rails-controller-testing
@@ -356,9 +400,12 @@ DEPENDENCIES
   sass-rails
   sdoc (~> 0.4.0)
   seedbank
+  selenium-webdriver
   simple_form
   sorcery (~> 0.12.0)
   uglifier
+  vcr
+  webmock
   whenever
 
 RUBY VERSION

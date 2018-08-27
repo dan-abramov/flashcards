@@ -35,7 +35,11 @@ gem 'responders'
 gem 'activeadmin'
 gem 'rolify'
 gem 'pundit'
-
+gem 'flickr_fu'
+gem 'popper_js'
+gem 'bootstrap'
+gem 'bootstrap-sass'
+gem "chromedriver-helper"
 
 group :development, :test do
   gem 'rspec-rails'
@@ -45,4 +49,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'jazz_fingers'
   gem 'rails-controller-testing'
+  gem 'vcr'
+  gem 'fakeweb'
+  gem 'webmock'
+  gem 'selenium-webdriver'
+  gem 'puma'
 end

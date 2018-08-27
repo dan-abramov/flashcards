@@ -23,10 +23,18 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def update
-    if @card.update(card_params)
-      redirect_to cards_path
-    else
-      respond_with @card
+    respond_to do |format|
+      format.html do
+        if @card.update(card_params)
+          redirect_to cards_path
+        else
+          respond_with @card
+        end
+      end
+      format.js do
+        @card.update(update_params)
+        @card.remove_image! unless card_params['image']
+      end
     end
   end
 
@@ -43,6 +51,10 @@ class Dashboard::CardsController < Dashboard::BaseController
 
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                 :image, :image_cache, :remove_image, :block_id)
+                                 :image, :image_cache, :remove_image, :block_id, :image_flickr_url)
+  end
+
+  def update_params
+    card_params['image_flickr_url'] ? card_params : card_params.merge(image_flickr_url: nil)
   end
 end
