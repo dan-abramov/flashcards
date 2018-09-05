@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713130325) do
+ActiveRecord::Schema.define(version: 20180903155714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20180713130325) do
     t.integer "attempt", default: 1, null: false
     t.integer "quality", default: 5, null: false
     t.string "image_flickr_url"
+  end
+
+  create_table "fl_engine_articles", force: :cascade do |t|
+    t.string "title"
+    t.text "text"
+    t.string "postable_type"
+    t.bigint "postable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["postable_type", "postable_id"], name: "index_fl_engine_articles_on_postable_type_and_postable_id"
   end
 
   create_table "roles", force: :cascade do |t|

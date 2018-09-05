@@ -39,7 +39,10 @@ gem 'flickr_fu'
 gem 'popper_js'
 gem 'bootstrap'
 gem 'bootstrap-sass'
-gem "chromedriver-helper"
+gem 'chromedriver-helper'
+gem 'mini_racer'
+
+gem 'fl_engine', path: '../fl_engine'
 
 group :development, :test do
   gem 'rspec-rails'

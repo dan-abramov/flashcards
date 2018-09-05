@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   filter :locale
-
   root 'main#index'
 
   scope module: 'home' do
     resources :user_sessions, only: [:new, :create]
-    resources :users, only: [:new, :create]
+    resources :users, only: [:new, :create] do
+      mount FlEngine::Engine, :at => "/blog", as: 'blog'
+    end
     resources :home, only: [:index]
     get 'login' => 'user_sessions#new', :as => :login
 
